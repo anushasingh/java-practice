@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="java/acronym/src/main/java"/>
+	<classpathentry kind="src" path="java/acronym/src/test/java"/>
+	<classpathentry kind="src" path="java/anagram/src/main/java"/>
+	<classpathentry kind="src" path="java/anagram/src/test/java"/>
+	<classpathentry kind="src" path="java/armstrong-numbers/src/main/java"/>
+	<classpathentry kind="src" path="java/armstrong-numbers/src/test/java"/>
+	<classpathentry kind="src" path="java/darts/src/main/java"/>
+	<classpathentry kind="src" path="java/darts/src/test/java"/>
+	<classpathentry kind="src" path="java/dnd-character/src/main/java"/>
+	<classpathentry kind="src" path="java/dnd-character/src/test/java"/>
+	<classpathentry kind="src" path="java/gigasecond/src/main/java"/>
+	<classpathentry kind="src" path="java/gigasecond/src/test/java"/>
+	<classpathentry kind="src" path="java/hamming/src/main/java"/>
+	<classpathentry kind="src" path="java/hamming/src/test/java"/>
+	<classpathentry kind="src" path="java/hello-world/src/main/java"/>
+	<classpathentry kind="src" path="java/hello-world/src/test/java"/>
+	<classpathentry kind="src" path="java/isogram/src/main/java"/>
+	<classpathentry kind="src" path="java/isogram/src/test/java"/>
+	<classpathentry kind="src" path="java/pangram/src/main/java"/>
+	<classpathentry kind="src" path="java/pangram/src/test/java"/>
+	<classpathentry kind="src" path="java/raindrops/src/main/java"/>
+	<classpathentry kind="src" path="java/raindrops/src/test/java"/>
+	<classpathentry kind="src" path="java/resistor-color/src/main/java"/>
+	<classpathentry kind="src" path="java/resistor-color/src/test/java"/>
+	<classpathentry kind="src" path="java/reverse-string/src/main/java"/>
+	<classpathentry kind="src" path="java/reverse-string/src/test/java"/>
+	<classpathentry kind="src" path="java/rna-transcription/src/main/java"/>
+	<classpathentry kind="src" path="java/rna-transcription/src/test/java"/>
+	<classpathentry kind="src" path="java/twelve-days/src/main/java"/>
+	<classpathentry kind="src" path="java/twelve-days/src/test/java"/>
+	<classpathentry kind="src" path="java/two-fer/src/main/java"/>
+	<classpathentry kind="src" path="java/two-fer/src/test/java"/>
+	<classpathentry kind="output" path="java/acronym/bin/main"/>
+</classpath>
