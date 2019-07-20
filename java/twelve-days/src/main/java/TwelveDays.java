@@ -57,8 +57,8 @@ class TwelveDays {
      * @return
      */
     String verse(int verseNumber) {
-        PoemLineInfo PoemLineInfo = poemLine.get(verseNumber);
-        String newString = String.format(VERSE_FORMAT, PoemLineInfo.getOrdinal(), PoemLineInfo.getcontent());
+        PoemLineInfo poemLineInfo = poemLine.get(verseNumber);
+        String newString = String.format(VERSE_FORMAT, poemLineInfo.getOrdinal(), poemLineInfo.getcontent());
         for (int i = verseNumber - 1; i >= 1; i--) {
             newString += poemLine.get(i).getcontent();
         }
