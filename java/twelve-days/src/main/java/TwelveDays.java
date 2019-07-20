@@ -1,89 +1,88 @@
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * For creating individual poem lines.
+ */
+class PoemLineInfo {
+    private String ordinal;
+    private String content;
+
+    public PoemLineInfo(String ordinal, String content) {
+        this.ordinal = ordinal;
+        this.content = content;
+    }
+
+    /**
+     * To get the ordinal for the poem line.
+     */
+    public String getOrdinal() {
+        return ordinal;
+    }
+
+    /**
+     * To get the main content for the poem line.
+     */
+    public String getcontent() {
+        return content;
+    }
+}
 
 class TwelveDays {
-    private HashMap<Integer, String> cardinal_numbers;
-    private HashMap<Integer, String> ordinal_numbers;
-    private List<String> gifts;
 
-    TwelveDays() {
-        cardinal_numbers = new HashMap<>();
-        cardinal_numbers.put(1, "a");
-        cardinal_numbers.put(2, "two");
-        cardinal_numbers.put(3, "three");
-        cardinal_numbers.put(4, "four");
-        cardinal_numbers.put(5, "five");
-        cardinal_numbers.put(6, "six");
-        cardinal_numbers.put(7, "seven");
-        cardinal_numbers.put(8, "eight");
-        cardinal_numbers.put(9, "nine");
-        cardinal_numbers.put(10, "ten");
-        cardinal_numbers.put(11, "eleven");
-        cardinal_numbers.put(12, "twelve");
+    /**
+     * Constant defining the format of each poem line.
+     */
+    private final static String VERSE_FORMAT = "On the %s day of Christmas my true love gave to me: %s";
 
-        ordinal_numbers = new HashMap<>();
-        ordinal_numbers.put(1, "first");
-        ordinal_numbers.put(2, "second");
-        ordinal_numbers.put(3, "third");
-        ordinal_numbers.put(4, "fourth");
-        ordinal_numbers.put(5, "fifth");
-        ordinal_numbers.put(6, "sixth");
-        ordinal_numbers.put(7, "seventh");
-        ordinal_numbers.put(8, "eighth");
-        ordinal_numbers.put(9, "ninth");
-        ordinal_numbers.put(10, "tenth");
-        ordinal_numbers.put(11, "eleventh");
-        ordinal_numbers.put(12, "twelfth");
-
-        gifts = new ArrayList<>();
-        gifts.add("Partridge in a Pear Tree");
-        gifts.add("Turtle Doves");
-        gifts.add("French Hens");
-        gifts.add("Calling Birds");
-        gifts.add("Gold Rings");
-        gifts.add("Geese-a-Laying");
-        gifts.add("Swans-a-Swimming");
-        gifts.add("Maids-a-Milking");
-        gifts.add("Ladies Dancing");
-        gifts.add("Lords-a-Leaping");
-        gifts.add("Pipers Piping");
-        gifts.add("Drummers Drumming");
+    final static Map<Integer, PoemLineInfo> poemLine = new HashMap<>();
+    static {
+        poemLine.put(1,  new PoemLineInfo("first", "a Partridge in a Pear Tree.\n"));
+        poemLine.put(2,  new PoemLineInfo("second", "two Turtle Doves, and "));
+        poemLine.put(3,  new PoemLineInfo("third", "three French Hens, "));
+        poemLine.put(4,  new PoemLineInfo("fourth", "four Calling Birds, "));
+        poemLine.put(5,  new PoemLineInfo("fifth", "five Gold Rings, "));
+        poemLine.put(6,  new PoemLineInfo("sixth", "six Geese-a-Laying, "));
+        poemLine.put(7,  new PoemLineInfo("seventh", "seven Swans-a-Swimming, "));
+        poemLine.put(8,  new PoemLineInfo("eighth", "eight Maids-a-Milking, "));
+        poemLine.put(9,  new PoemLineInfo("ninth", "nine Ladies Dancing, "));
+        poemLine.put(10, new PoemLineInfo("tenth", "ten Lords-a-Leaping, "));
+        poemLine.put(11, new PoemLineInfo("eleventh", "eleven Pipers Piping, "));
+        poemLine.put(12, new PoemLineInfo("twelfth", "twelve Drummers Drumming, "));
     }
 
-    String getGifts(int verseNumber) {
-        StringBuilder sb = new StringBuilder();
-
-        for (int v = verseNumber; v > 0; v--) {
-            if (v > 1 || verseNumber == 1) {
-                sb.append(String.format("%s %s", cardinal_numbers.get(v), gifts.get(v - 1)));
-                if (verseNumber != 1) {
-                    sb.append(", ");
-                }
-            } else {
-                sb.append("and " + String.format("%s %s", cardinal_numbers.get(v), gifts.get(v - 1)));
-            }
-        }
-
-        return sb.toString();
-    }
-
+    /**
+     * Generates verse accroding to verse number.
+     * @param verseNumber
+     * @return
+     */
     String verse(int verseNumber) {
-        return String.format("On the %s day of Christmas my true love gave to me: %s.\n",
-                ordinal_numbers.get(verseNumber), getGifts(verseNumber));
-    }
-
-    String verses(int startVerse, int endVerse) {
-        StringBuilder sb = new StringBuilder();
-
-        for (int i = startVerse; i <= endVerse; i++) {
-            sb.append(String.format("%s", verse(i)));
-            if (i != endVerse) {
-                sb.append("\n");
-            }
+        PoemLineInfo PoemLineInfo = poemLine.get(verseNumber);
+        String newString = String.format(VERSE_FORMAT, PoemLineInfo.getOrdinal(), PoemLineInfo.getcontent());
+        for (int i = verseNumber - 1; i >= 1; i--) {
+            newString += poemLine.get(i).getcontent();
         }
-
-        return sb.toString();
+        return newString;
     }
 
+    /**
+     * Generates all verses from given start index to end index.
+     * @param startVerse
+     * @param endVerse
+     */
+    String verses(int startVerse, int endVerse) {
+        String finalText = "";
+        for (int i = startVerse; i <= endVerse; i++) {
+            finalText += verse(i);
+            if (i != endVerse) { finalText += "\n"; }
+        }
+        return finalText;
+    }
+
+    /**
+     * Returns the entire lyrics of poem.
+     * @return
+     */
     String sing() {
         return verses(1, 12);
     }
